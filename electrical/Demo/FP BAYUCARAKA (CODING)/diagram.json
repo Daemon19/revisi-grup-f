@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "author": "M. Nawfal Ferdiansyah",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 83.6,
+      "left": 24.56,
+      "rotate": 180,
+      "attrs": {}
+    },
+    { "type": "wokwi-a4988", "id": "drv1", "top": 43.2, "left": 264, "attrs": {} },
+    { "type": "wokwi-a4988", "id": "drv2", "top": 264, "left": 264, "attrs": {} },
+    {
+      "type": "wokwi-stepper-motor",
+      "id": "stepper1",
+      "top": -35.42,
+      "left": 372.79,
+      "rotate": 90,
+      "attrs": { "size": "23", "arrow": "orange" }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": 150.8,
+      "left": -285.2,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo2",
+      "top": 64.4,
+      "left": -285.2,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-stepper-motor",
+      "id": "stepper2",
+      "top": 184.93,
+      "left": 372.09,
+      "rotate": 90,
+      "attrs": { "size": "23", "arrow": "orange" }
+    },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": 0.76, "left": 336, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 365.8, "left": 346.4, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "drv2:2B", "stepper2:A-", "blue", [ "h0" ] ],
+    [ "drv2:2A", "stepper2:A+", "blue", [ "h0" ] ],
+    [ "drv2:1A", "stepper2:B+", "cyan", [ "h0" ] ],
+    [ "drv2:1B", "stepper2:B-", "cyan", [ "h0" ] ],
+    [ "drv1:2B", "stepper1:A-", "blue", [ "h0" ] ],
+    [ "drv1:2A", "stepper1:A+", "blue", [ "h0" ] ],
+    [ "drv1:1A", "stepper1:B+", "cyan", [ "h0" ] ],
+    [ "drv1:1B", "stepper1:B-", "cyan", [ "h0" ] ],
+    [ "drv1:RESET", "drv1:SLEEP", "yellow", [ "h-19.2", "v9.6" ] ],
+    [ "drv2:RESET", "drv2:SLEEP", "yellow", [ "h-19.2", "v9.6" ] ],
+    [ "drv1:VMOT", "vcc1:VCC", "red", [ "h0" ] ],
+    [ "drv1:GND.2", "gnd1:GND", "black", [ "h0" ] ],
+    [ "drv2:GND.2", "gnd1:GND", "black", [ "h0" ] ],
+    [ "drv2:VMOT", "vcc1:VCC", "red", [ "h0" ] ],
+    [ "esp:14", "drv1:ENABLE", "white", [ "h47.85", "v-38.4" ] ],
+    [ "drv2:ENABLE", "esp:14", "white", [ "h-96", "v-124.8" ] ],
+    [ "esp:26", "drv2:DIR", "gold", [ "h19.05", "v28.8" ] ],
+    [ "esp:27", "drv2:STEP", "violet", [ "h28.65", "v9.6" ] ],
+    [ "esp:32", "drv1:DIR", "gold", [ "h67.05", "v-96" ] ],
+    [ "drv1:STEP", "esp:33", "violet", [ "h-86.4", "v86.4" ] ],
+    [ "drv2:VDD", "esp:5V", "red", [ "h28.95", "v48.08", "h-124.8", "v-163.2" ] ],
+    [ "drv1:VDD", "esp:5V", "red", [ "h19.35", "v57.68", "h-115.2", "v-86.4" ] ],
+    [ "esp:GND.1", "drv1:GND.1", "black", [ "h0" ] ],
+    [ "drv2:GND.1", "esp:GND.1", "black", [ "v19.28", "h-105.45", "v-230.4" ] ],
+    [ "esp:18", "servo2:PWM", "green", [ "h-105.6", "v-57.6" ] ],
+    [ "esp:19", "servo1:PWM", "green", [ "h0" ] ],
+    [ "servo1:V+", "esp:5V", "red", [ "h105.6", "v-153.7", "h28.8" ] ],
+    [ "servo2:V+", "esp:5V", "red", [ "h105.6", "v-67.3", "h153.6" ] ],
+    [ "servo2:GND", "esp:GND.2", "black", [ "h96", "v124.8" ] ],
+    [ "servo1:GND", "esp:GND.2", "black", [ "h96", "v67.2" ] ],
+    [ "drv1:MS1", "esp:5V", "green", [ "h-76.8", "v19.2" ] ],
+    [ "drv1:MS2", "esp:5V", "green", [ "h-76.8", "v48" ] ],
+    [ "drv2:MS1", "esp:5V", "green", [ "h-67.2", "v-201.6" ] ],
+    [ "drv2:MS2", "esp:5V", "green", [ "h-67.2", "v-211.2" ] ]
+  ],
+  "dependencies": {}
+}
