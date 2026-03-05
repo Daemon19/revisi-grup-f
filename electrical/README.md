@@ -1,9 +1,9 @@
-# Revisi Electrical
+# ⚡ Revisi Electrical
 
-## PCB
+## 🖨️ PCB
 
 Polaritas kapsitor 100uF pada front.silkscreen terbalik, sehingga dibenarkan di versi revisi
 
-## KODE
+## 💾 KODE
 
 Capit tidak terbuka maksimal sesuai yang dibutuhkan, maka value lebih disesuaikan pada int buka di fungsi `void capit()`.
